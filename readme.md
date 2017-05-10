@@ -1,3 +1,5 @@
+[Heroku 101](https://github.com/ibigfoot/heroku-101) | [Heroku 201](https://github.com/ibigfoot/heroku-201) | [Heroku 301](https://github.com/ibigfoot/heroku-301) | [Heroku 401](https://github.com/ibigfoot/heroku-401)
+
 # Node.js Kafka Client
 So let's shift tack a little and grab some code that is written in Node.js this time! We are going to deploy a simple node app that uses some websockets to consume events off the Kafka topic that we are currently populating.
 
