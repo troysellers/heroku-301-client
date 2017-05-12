@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 /*
     KAFKA SETUP
 */
-var brokerUrls = process.env.KAFKA_URL.replace(/\+ssl/g,'');
+var brokerUrls = process.env.HEROKU_KAFKA_PURPLE_URL.replace(/\+ssl/g,'');
 var consumer = new Kafka.SimpleConsumer({
   connectionString: brokerUrls,
   ssl: {
