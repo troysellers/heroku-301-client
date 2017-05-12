@@ -56,3 +56,9 @@ Finally, let's turn everything off before we move onto our next excercise for th
 ```
 > heroku ps:scale worker=0
 ```
+
+Now, if for some reason yours isn't working as described and you really aren't too bothered to debug it.. 
+
+try clicking this button 
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
