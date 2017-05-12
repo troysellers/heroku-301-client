@@ -44,7 +44,7 @@ Let's see what happens if we scale
 
 ```
 > cd ../my-kafka-generator
-> heroku ps:scale worker=100:Standard-1x
+> heroku ps:scale worker=10:Standard-1x
 ```
 
 Watch those messages fly by now on your app. 
