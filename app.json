@@ -5,19 +5,19 @@
   "keywords": ["node", "websocket", "kafka", "consumer"],
   "env": {
     "KAFKA_CLIENT_CERT": {
-      "required": true
+      "required": false
     },
     "KAFKA_CLIENT_CERT_KEY": {
-      "required": true
+      "required": false
     },
     "KAFKA_TOPIC": {
       "required":true
     },
     "KAFKA_TRUSTED_CERT":{
-      "required":true
+      "required":false
     },
     "KAFKA_URL":{
-      "required":true
+      "required":false
     }
   }
 }
