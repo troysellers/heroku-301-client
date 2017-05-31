@@ -13,6 +13,9 @@ var bodyParser = require('body-parser');
     KAFKA SETUP
 */
 var brokerUrls = process.env.KAFKA_URL.replace(/\+ssl/g,'');
+// handle MT Kafka
+var kafkaTopic = process.env.KAFKA_PREFIX + process.env.KAFKA_TOPIC;
+
 var consumer = new Kafka.SimpleConsumer({
   connectionString: brokerUrls,
   ssl: {
@@ -54,7 +57,7 @@ var dataHandler = function(messageSet, topic, partition) {
     emit to all clients when a kafka message is received
 */
 consumer.init().then(function() {
-  return consumer.subscribe(process.env.KAFKA_TOPIC, dataHandler);
+  return consumer.subscribe(kafkaTopic, dataHandler);
 });
 
 /*
@@ -71,8 +74,8 @@ app.post('/fetch', function(req,res) {
     //console.log(JSON.stringify(req.body));
     var data = {};
 
-    consumer.unsubscribe(process.env.KAFKA_TOPIC);
-    data.kafkaReturn = consumer.subscribe(process.env.KAFKA_TOPIC, [0], {offset: req.body.offset}, dataHandler);
+    consumer.unsubscribe(kafkaTopic);
+    data.kafkaReturn = consumer.subscribe(kafkaTopic, [0], {offset: req.body.offset}, dataHandler);
 
     data.first = "First";
     
@@ -87,8 +90,8 @@ app.post('/earliest', function(req,res) {
     data.first = "First";
     data.second = "Second";
 
-    consumer.unsubscribe(process.env.KAFKA_TOPIC);
-    data.kafkaReturn = consumer.subscribe(process.env.KAFKA_TOPIC, [0], {time: Kafka.EARLIEST_OFFSET}, dataHandler);
+    consumer.unsubscribe(kafkaTopic);
+    data.kafkaReturn = consumer.subscribe(kafkaTopic, [0], {time: Kafka.EARLIEST_OFFSET}, dataHandler);
 
     res.setHeader('Content-Type','application/json');
     res.write(JSON.stringify(data));
@@ -99,8 +102,8 @@ app.post('/latest', function(req,res) {
     data.first = "First";
     data.second = "Second";
 
-    consumer.unsubscribe(process.env.KAFKA_TOPIC);
-    data.kafkaReturn = consumer.subscribe(process.env.KAFKA_TOPIC, [0], {time: Kafka.LATEST_OFFSET}, dataHandler);
+    consumer.unsubscribe(kafkaTopic);
+    data.kafkaReturn = consumer.subscribe(kafkaTopic, [0], {time: Kafka.LATEST_OFFSET}, dataHandler);
 
     res.setHeader('Content-Type','application/json');
     res.write(JSON.stringify(data));
