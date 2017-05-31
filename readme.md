@@ -12,10 +12,10 @@ Move back out of the generator and grab this code..
 And do the necessary to create your Heroku applications
 ```
 > cd heroku-301-client
-> heroku create troys-kafka-client
+> heroku create 
 ```
 
-Watch everything happen and then attach Kafka
+Watch everything happen and then attach Kafka, this will be the same kafka that was created in the last exercise. 
 
 ```
 > heroku addons:attach <<kafka addon name>>
@@ -40,7 +40,7 @@ When all is said and done, we should be able to just open our application
 ```
 
 Not bad hey.. so sure, I could use some help with UX design.. but this illustrates the concept of producing and consuming events quite well. 
-Let's see what happens if we scale
+Let's see what happens if we scale our generator to get some throughput.. 
 
 ```
 > cd ../my-kafka-generator
